@@ -1,0 +1,13 @@
+
+body {
+    font-family: -apple-system, sans-serif;
+    font-weight: 200;
+}
+
+div {
+    flex-direction: column;
+    display: flex;
+    flex-shrink: 0;
+    min-width: 0;
+    min-height: 0;
+}

@@ -1,0 +1,9 @@
+(executable (
+  (name main)
+  (public_name graphql)
+  (libraries (shared lwt cohttp cohttp.lwt graphql-lwt yojson))
+  ))
+
+(alias
+  ((name graphql)
+   (deps (main.exe))))
