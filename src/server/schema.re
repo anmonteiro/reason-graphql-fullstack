@@ -1,7 +1,5 @@
 open Shared.Types;
 
-open Lwt;
-
 module GQL = Graphql_lwt;
 
 type appState = {
@@ -17,17 +15,16 @@ let appState =
 
 let todo =
   GQL.Schema.(
-    obj("todo", ~fields=todo =>
+    obj("todo", ~fields=_ =>
       [
-        field("id", ~args=Arg.([]), ~typ=non_null(int), ~resolve=(_, p) =>
+        field("id", ~args=Arg.[], ~typ=non_null(int), ~resolve=(_, p) =>
           p.id
         ),
-        field(
-          "title", ~args=Arg.([]), ~typ=non_null(string), ~resolve=((), p) =>
+        field("title", ~args=Arg.[], ~typ=non_null(string), ~resolve=((), p) =>
           p.title
         ),
         field(
-          "completed", ~args=Arg.([]), ~typ=non_null(bool), ~resolve=((), p) =>
+          "completed", ~args=Arg.[], ~typ=non_null(bool), ~resolve=((), p) =>
           p.completed
         ),
       ]
@@ -40,7 +37,7 @@ let schema =
       [
         io_field(
           "todos",
-          ~args=Arg.([]),
+          ~args=Arg.[],
           ~typ=non_null(list(non_null(todo))),
           ~resolve=((), ())
           /* Hack: reverse the list because we insert new todos at the head */
@@ -75,7 +72,7 @@ let schema =
                   List.map(
                     ({id, completed} as todo) =>
                       if (id == idToToggle) {
-                        {...todo, completed: ! completed};
+                        {...todo, completed: !completed};
                       } else {
                         todo;
                       },
@@ -100,7 +97,7 @@ let schema =
                 ...appState^,
                 todos:
                   List.map(
-                    ({id, completed} as todo) =>
+                    ({id} as todo) =>
                       if (id == idToEdit) {
                         {...todo, title};
                       } else {

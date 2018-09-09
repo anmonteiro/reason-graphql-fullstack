@@ -1,4 +1,4 @@
-open Lwt;
+open Lwt.Infix;
 
 module C = Cohttp_lwt_unix;
 
@@ -41,11 +41,11 @@ let execute_query = (ctx, schema, variables, query) =>
     >>= (doc => Schema.execute(schema, ctx, ~variables, doc))
   );
 
-let execute_request = (ctx, schema, req, body) =>
+let execute_request = (ctx, schema, _req, body) =>
   Cohttp_lwt.Body.to_string(body)
   >>= (
     body' => {
-      Lwt_io.printf("Body: %s\n", body');
+      Printf.printf("Body: %s\n%!", body');
       let json = Yojson.Basic.from_string(body');
       let query =
         Yojson.Basic.(json |> Util.member("query") |> Util.to_string);
@@ -53,7 +53,7 @@ let execute_request = (ctx, schema, req, body) =>
         try (Yojson.Basic.Util.(json |> member("variables") |> to_assoc)) {
         | _ => []
         };
-      Lwt_io.printf("Query: %s\n", query);
+      Printf.printf("Query: %s\n%!", query);
       let result =
         execute_query(
           ctx,
@@ -76,8 +76,8 @@ let execute_request = (ctx, schema, req, body) =>
     }
   );
 
-let mk_callback = (mk_context, schema, conn, req: Cohttp.Request.t, body) => {
-  Lwt_io.printf("Req: %s\n", req.resource);
+let mk_callback = (mk_context, schema, _conn, req: Cohttp.Request.t, body) => {
+  Printf.printf("Req: %s\n%!", req.resource);
   let req_path = Cohttp.Request.uri(req) |> Uri.path;
   let path_parts = Str.(split(regexp("/"), req_path));
   switch (req.meth, path_parts) {
