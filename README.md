@@ -28,6 +28,7 @@ OCaml / Reason types (have a look in [`src/shared`](./src/shared)).
 _it's a quiet startup; check http://localhost:8080/graphql to see that it's running!_
 
 - Make sure you have `opam` (version 2) installed and are on a switch >= 4.03 (`ocaml-graphql-server` requires at least OCaml 4.03)
+- `opam pin add reason --dev-repo`
 - `opam install . --deps-only`
 - `make run` (to run the server)
 
