@@ -27,9 +27,9 @@ OCaml / Reason types (have a look in [`src/shared`](./src/shared)).
 
 **Note**: _it's a quiet startup; check http://localhost:8080/graphql to see that it's running!_
 
-- npm install -g esy
-- esy @server
-- esy @server x graphql
+- `npm install -g esy`
+- `esy @server`
+- `esy @server x graphql`
 
 ## Neat tricks
 
