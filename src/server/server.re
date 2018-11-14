@@ -64,10 +64,15 @@ let execute_request = (ctx, schema, _req, body) =>
       result
       >>= (
         fun
-        | Ok(data) => {
+        | Ok(`Response(data)) => {
             let body = Yojson.Basic.to_string(data);
             C.Server.respond_string(~status=`OK, ~body, ());
           }
+        | Ok(`Stream(_)) =>
+          C.Server.respond_error(
+            ~body="Subscriptions are not implemented by this server.",
+            (),
+          )
         | Error(err) => {
             let body = Yojson.Basic.to_string(err);
             C.Server.respond_error(~body, ());

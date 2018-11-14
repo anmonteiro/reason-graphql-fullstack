@@ -1,0 +1,26 @@
+{
+  "name": "reason-graphql-fullstack",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "ocaml": "~4.7.1000",
+    "@opam/dune": "*",
+    "@opam/lwt": "*",
+    "@opam/yojson": "*",
+    "@opam/cohttp-lwt": "*",
+    "@opam/conf-libev": "*",
+    "@opam/graphql": "*",
+    "@opam/graphql-lwt": "*",
+    "@opam/reason": "^3.3.7"
+  },
+  "devDependencies": {
+
+  },
+  "resolutions": {
+    "@opam/graphql": "andreas/ocaml-graphql-server:graphql.opam#master",
+    "@opam/graphql-lwt": "anmonteiro/ocaml-graphql-server:graphql-lwt.opam#master"
+  },
+  "esy": {
+    "build": "dune build -p #{self.name}"
+  }
+}

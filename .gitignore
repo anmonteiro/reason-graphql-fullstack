@@ -3,3 +3,5 @@ node_modules
 lib
 public/bundle.js
 /**/.merlin
+_esy
+*.install
