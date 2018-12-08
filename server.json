@@ -8,15 +8,13 @@
     "@opam/lwt": "*",
     "@opam/yojson": "*",
     "@opam/cohttp-lwt": "*",
+    "@opam/cohttp-lwt-unix": "*",
     "@opam/graphql": "*",
     "@opam/graphql-lwt": "*",
     "@opam/reason": "^3.3.7"
   },
   "devDependencies": {},
-  "resolutions": {
-    "@opam/graphql": "andreas/ocaml-graphql-server:graphql.opam#master",
-    "@opam/graphql-lwt": "anmonteiro/ocaml-graphql-server:graphql-lwt.opam#master"
-  },
+  "resolutions": {},
   "esy": {
     "build": "dune build -p #{self.name}"
   }
