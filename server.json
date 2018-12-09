@@ -13,8 +13,6 @@
     "@opam/graphql-lwt": "*",
     "@opam/reason": "^3.3.7"
   },
-  "devDependencies": {},
-  "resolutions": {},
   "esy": {
     "build": "dune build -p #{self.name}"
   }
