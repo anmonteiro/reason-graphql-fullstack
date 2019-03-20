@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "ocaml": "~4.7.1000",
+    "ssl": "^1.0.0",
     "@opam/dune": "*",
     "@opam/lwt": "*",
     "@opam/yojson": "*",
