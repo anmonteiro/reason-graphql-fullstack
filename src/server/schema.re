@@ -17,14 +17,14 @@ let todo =
   GQL.Schema.(
     obj("todo", ~fields=_ =>
       [
-        field("id", ~args=Arg.[], ~typ=non_null(int), ~resolve=(_, p) =>
+        field("id", ~args=Arg.[], ~typ=non_null(int), ~resolve=({ ctx : ()}, p) =>
           p.id
         ),
-        field("title", ~args=Arg.[], ~typ=non_null(string), ~resolve=((), p) =>
+        field("title", ~args=Arg.[], ~typ=non_null(string), ~resolve=(_ctx, p) =>
           p.title
         ),
         field(
-          "completed", ~args=Arg.[], ~typ=non_null(bool), ~resolve=((), p) =>
+          "completed", ~args=Arg.[], ~typ=non_null(bool), ~resolve=(_ctx, p) =>
           p.completed
         ),
       ]
@@ -39,7 +39,7 @@ let schema =
           "todos",
           ~args=Arg.[],
           ~typ=non_null(list(non_null(todo))),
-          ~resolve=((), ())
+          ~resolve=(_ctx, ())
           /* Hack: reverse the list because we insert new todos at the head */
           => Lwt_result.return(appState^.todos |> List.rev)),
       ],

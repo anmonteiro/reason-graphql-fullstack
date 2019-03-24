@@ -1,6 +1,6 @@
 (executable
   (name main)
   (public_name graphql)
-  (libraries shared lwt cohttp cohttp.lwt graphql-lwt yojson str)
+  (libraries shared lwt cohttp cohttp-lwt-unix graphql-lwt yojson str)
   (flags (:standard -w -9)))
 

@@ -11,7 +11,12 @@
     "@opam/cohttp-lwt-unix": "*",
     "@opam/graphql": "*",
     "@opam/graphql-lwt": "*",
-    "@opam/reason": "^3.3.7"
+    "@opam/reason": "^3.3.7",
+    "@opam/sexplib0": ">= 0.11.0",
+    "@opam/sexplib": ">= 0.11.0"
+  },
+  "devDependencies": {
+    "@opam/merlin": "*"
   },
   "esy": {
     "build": "dune build -p #{self.name}"
